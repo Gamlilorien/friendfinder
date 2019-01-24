@@ -1,4 +1,5 @@
-//Required module dependencies
+//**** Required module dependencies ****
+//======================================
 var express = require("express");
 var path = require("path");
 
@@ -10,3 +11,14 @@ var PORT = process.env.PORT || 3000;
 //Data parsing for express just in case
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
+//require the other files
+require(".routing/apiRoutes")(app);
+require(".routing/htmlRoutes")(app);
+
+
+//**** Start server & begin listening ****
+//========================================
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
