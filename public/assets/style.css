@@ -1,0 +1,42 @@
+nav i, nav i.material-icons {
+    font-size: 3rem;
+}
+
+/* sticky footer to keep at bottom of page regardless of content length */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+h1, h2, h3, h4, h5, nav, i, p {
+    padding: 0 10px 0 10px;
+}
+
+nav, .page-footer {
+    /* background-color: #6e72ee; */
+    background-color: #2633a6;
+}
+
+.my-main {
+    margin-top: 2rem;
+    /* height: 400px; */
+    position: relative;
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    padding: 10px;
+    background: white;
+}
+
+.my-right {
+    text-align: right;
+}
+
+.survey-text {
+    font-size: 1.2rem;
+}
