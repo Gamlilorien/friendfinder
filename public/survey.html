@@ -7,7 +7,7 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"  media="screen,projection"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/style.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -35,7 +35,7 @@
                         <h4>Survey Questions</h4>
                         <div class="divider"></div>
                         <div class="section">
-                                <form action="#">
+                                <form action="#" id="survey-form">
                                         <p>Your Name (Required)</p>
                                         <input type="text" id="name" class="form-control" required="">
 
@@ -129,11 +129,24 @@
 
     <!-- BEGIN FOOTER -->
     <footer class="page-footer">
-            <p>API Friends List | GitHub Repo</p>
+        <p><a href="/">Home</a> | <a href="/api/friends">API Friends List</a> | <a href="https://github.com/Gamlilorien/friendfinder">GitHub Repo</a></p>
     </footer>
                     
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+    <script>
+
+        function submitForm() {            
+
+            $.ajax({url: "/api/friends", method: "POST"}).then(function(){
+                $("#name").empty();
+                $("#photo").empty();
+                
+            })
+        };
+
+        $("#submit").on("click", submitForm);
+    </script>
 </body>
 </html>
 

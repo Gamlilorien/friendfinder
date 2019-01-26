@@ -1,5 +1,5 @@
 
-var friends = [
+const friends = [
     {
         "name":"Gimli, son of Glóin",
         "photo":"https://vignette.wikia.nocookie.net/lotr/images/e/ec/Gimli_-_FOTR.png/revision/latest?cb=20121008105956",
@@ -81,4 +81,6 @@ var friends = [
           ]
       }
 
-]
+];
+
+module.exports = friends;

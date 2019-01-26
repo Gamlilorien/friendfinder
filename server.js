@@ -12,9 +12,12 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+//I want to use custom css
+app.use(express.static("public"));
+
 //require the other files
-require(".routing/apiRoutes")(app);
-require(".routing/htmlRoutes")(app);
+require("./routing/apiRoutes")(app);
+require("./routing/htmlRoutes")(app);
 
 
 //**** Start server & begin listening ****
