@@ -136,12 +136,57 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
     <script>
 
-        function submitForm() {            
+        function submitForm() {
+            event.preventDefault();
+            
+            //grab the entered from data
+            var qArray = [];
+            //now grab each score and to push to the array
+            qArray.push($("#q1").val().trim());
+            qArray.push($("#q2").val().trim());
+            qArray.push($("#q3").val().trim());
+            qArray.push($("#q4").val().trim());
+            qArray.push($("#q5").val().trim());
+            qArray.push($("#q6").val().trim());
+            qArray.push($("#q7").val().trim());
+            qArray.push($("#q8").val().trim());
+            qArray.push($("#q9").val().trim());
+            qArray.push($("#q10").val().trim());
+            console.log(qArray);
 
-            $.ajax({url: "/api/friends", method: "POST"}).then(function(){
-                $("#name").empty();
-                $("#photo").empty();
-                
+            var newFriend = {
+              name: $("#name").val().trim(),
+              photo: $("#photo").val().trim(),
+              scores: qArray
+            }
+            console.log(newFriend);
+
+            //Now use JQuery to do the POST request
+            //$.post(URL, DATA, FUNCTION)
+           $.post("/api/friends", newFriend,
+            function(cb) {
+
+              //if the callback is true
+              if (cb) {
+                console.log("Success");
+              } else {
+                //this should never evaluate...
+                //console.log("faliure?");
+              };
+              
+              //now clear the form values
+              $("#name").val("");
+              $("#photo").val("");
+              $("#q1").val("");
+              $("#q2").val("");
+              $("#q3").val("");
+              $("#q4").val("");
+              $("#q5").val("");
+              $("#q6").val("");
+              $("#q7").val("");
+              $("#q8").val("");
+              $("#q9").val("");
+              $("#q10").val("");
             })
         };
 
