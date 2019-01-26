@@ -40,3 +40,20 @@ nav, .page-footer {
 .survey-text {
     font-size: 1.2rem;
 }
+
+.modal {
+    max-height: 85%;
+}
+
+div.my-height {
+    padding: 0;
+    height: 50px;
+}
+
+.no-bottom-mg {
+    margin-bottom: 0;
+}
+
+.button-my-modal {
+    margin-top: 6px;
+}

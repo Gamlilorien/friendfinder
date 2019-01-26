@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"  media="screen,projection"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="style.css"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,33 @@
     <!-- END MAIN NAV MENU -->
 
     <main>
+
+        <!-- BEGIN MODAL CARD WINDOW -->
+              <!-- Modal Trigger -->
+              <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+              <!-- Modal Structure -->
+              <div id="modal1" class="modal">
+                <div class="modal-content">
+                  <!-- content -->
+                  <div class="card">
+                      <div class="card-image">
+                        <img id="mPhoto" src="https://www.gannett-cdn.com/-mm-/51113c05e531144c5354e297104650e83bea2942/c=632-0-2240-1206/local/-/media/2017/02/09/USATODAY/usatsports/vol4.jpg">
+                        <span class="card-title" id="mName">The Dark Lord</span>
+                      </div>
+                      <div class="my-height">
+                          <div class="row no-bottom-mg">
+                            <div class="col s6"><h5>Match Score: <span id="mScore">12</span></h5></div>
+                            <div class="col s6 my-right"><a href="#!" class="modal-close waves-effect waves-green btn button-my-modal">Close</a></div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- end content -->
+                </div>
+              </div>
+        <!-- END MODAL CARD WINDOW -->
     
+            <!-- BEGIN MAIN SURVEY FORM -->
             <div class="row container my-main">
                     <div class="col s12">
                             
@@ -133,7 +159,7 @@
     </footer>
                     
     
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
 
         function submitForm() {
@@ -166,13 +192,17 @@
            $.post("/api/friends", newFriend,
             function(cb) {
 
-              //if the callback is true
-              if (cb) {
-                console.log("Success");
-              } else {
-                //this should never evaluate...
-                //console.log("faliure?");
-              };
+              //Now that the new form values have been saved
+              //the cb will be an object of the calculated best friend match
+              console.log(cb);
+
+              //using this cb result, we need to populate the modal values and show the window
+              $("#mName").html(cb.name);
+              $("#mPhoto").attr({"src": cb.photo});
+              $("#mScore").html(cb.score);
+              //now trigger modal
+              
+              //$('#modal1').modal('open');
               
               //now clear the form values
               $("#name").val("");
@@ -191,6 +221,15 @@
         };
 
         $("#submit").on("click", submitForm);
+
+        //add listner for modal to initialize
+        $(document).ready(function(){
+          $('#modal1').modal();
+        });
+
+        //$(".modal").open('#modal1');
+       
+
     </script>
 </body>
 </html>
